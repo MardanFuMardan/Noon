@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
+
 /* Root Variables */
 :root {
   --primary-color: #f2d812; /* بنفسجي داكن */
@@ -20,26 +21,27 @@
   --tab-border-radius: 4px;
   --transition-duration: 0.3s;
   --shadow-effect: 0px 4px 8px rgba(0, 0, 0, 0.3);
-    --fixed-dark-color: #1c1c1c; /* لون ثابت للخلفية الداكنة */
+  --fixed-dark-color: #1c1c1c; /* لون ثابت للخلفية الداكنة */
   --fixed-dark-text: #f2d812; /* لون النص الثابت */
-   --fixed-dark-border: #f2d8123d;
-      --fixed-dark-textareatext: #f4f4f4;
+  --fixed-dark-border: #f2d8123d;
+  --fixed-dark-textareatext: #f4f4f4;
+  --fixed-dark-color-backtextarea: #2d2d2d;
 }
 
 :root[data-theme="light"] {
   --primary-color: #00acb6; /* أزرق غامق (لون أساسي للأزرار والنصوص المميزة) */
-  --secondary-color: #00b4d8; /* أزرق فاتح متناسق مع الأساسي */
+  --secondary-color: #00acb6; /* أزرق فاتح متناسق مع الأساسي */
   --highlight-color: #f8f9fa; /* أبيض هادئ للخلفيات */
   --background-color: #e9ecef; /* رمادي فاتح للخلفيات العامة */
   --text-color: #212529; /* رمادي غامق للنصوص */
-  --tab-bg-color: #dee2e6; /* رمادي متوسط للتابات */
+  --tab-bg-color: #ebebeb; /* رمادي متوسط للتابات */
   --button-hover-color: #00acb6; /* أزرق أغمق عند التمرير */
   --fixed-dark-color: #ffffff; /* أبيض نقي للأزرار والخلفيات الثانوية */
   --fixed-dark-text: #00acb6; /* أزرق غامق للنصوص */
   --fixed-dark-border: #ced4da; /* حدود رمادية ناعمة */
   --fixed-dark-textareatext: #495057; /* رمادي داكن للنصوص */
+  --fixed-dark-color-backtextarea: #f9f9f9;
 }
-
 
 /* General Styles */
 body {
@@ -48,6 +50,8 @@ body {
   color: var(--text-color);
   margin: 0;
   padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -59,12 +63,20 @@ nav {
   top: 0;
   left: 0;
   background: var(--highlight-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 20px;
   overflow-y: auto;
-  box-shadow: var(--shadow-effect);
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect);
 }
 nav ul {
   list-style: none;
@@ -86,6 +98,8 @@ nav ul li a {
   font-size: 17px;
   font-weight: 400;
   background: var(--tab-bg-color); /* خلفية افتراضية */
+  -webkit-transition: all var(--transition-duration);
+  -o-transition: all var(--transition-duration);
   transition: all var(--transition-duration);
   border-bottom: 3px solid transparent; /* إعداد البوردر السفلي الشفاف */
 }
@@ -93,7 +107,8 @@ nav ul li a {
 nav ul li a:hover {
   background: var(--primary-color); /* خلفية عند التمرير */
   color: #303030; /* لون النص عند التمرير */
-  box-shadow: var(--shadow-effect);
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect);
 }
 
 nav ul li a.active {
@@ -104,24 +119,33 @@ nav ul li a.active {
 
 /* Content Section */
 .content {
-  margin-left: 255px;
-  padding: 30px;
-  flex: 1;
+margin-left: 255px;
+    padding: 80px;
+    padding-top: 0;
+    padding-bottom: 0;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 
 /* Tabs Container */
 .tabsm {
   background: var(--tab-bg-color);
   border-radius: var(--tab-border-radius);
-  box-shadow: var(--shadow-effect);
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect);
   padding: 25px;
   margin-bottom: 30px;
 }
 
 /* Tabs Navigation Bar */
 .tabsm-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   gap: 15px;
   background: var(--highlight-color);
   border-radius: 4px;
@@ -136,13 +160,17 @@ nav ul li a.active {
   border-radius: var(--tab-border-radius);
   border: none;
   cursor: pointer;
+  -webkit-transition: all var(--transition-duration);
+  -o-transition: all var(--transition-duration);
   transition: all var(--transition-duration);
   text-transform: uppercase;
 }
 .tabm-button:hover {
   background: var(--button-hover-color);
   color: #303030;
-  transform: translateY(-2px);
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 .tabm-button.active{
   background: var(--tab-bg-color);
@@ -166,24 +194,25 @@ input, button, select, h1, h2, h3, h4, h5, h6, p, span {
 /* Tab Content */
 textarea {
   width: 100%;
-  background: var(--fixed-dark-color); /* خلفية ثابتة */
+  background: var(--fixed-dark-color-backtextarea); /* خلفية ثابتة */
   color: var(--fixed-dark-textareatext); /* نص ثابت */
-  border: 1px solid var(--fixed-dark-border);
   border-radius: var(--tab-border-radius);
   padding: 12px;
-  margin-top: 15px;
   resize: none;
   height: 150px;
-  font-size: 14px;
   direction: rtl; /* اتجاه النص للغة العربية */
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
     font-family: 'Cairo', sans-serif; /* Apply font to all text areas */
     font-size: 12px;
+	border: 0px solid var(--fixed-dark-border);
+	border-bottom: 1px solid var(--fixed-dark-border);
 }
 
 textarea:focus {
   outline: 2px solid var(--secondary-color);
-  box-shadow: 0px 0px 8px var(--secondary-color);
+  -webkit-box-shadow: 0px 0px 8px var(--secondary-color);
+          box-shadow: 0px 0px 8px var(--secondary-color);
 }
 
 /* Copy Button */
@@ -198,14 +227,20 @@ textarea:focus {
   font-size: 14px;
   padding: 6px 10px;
   cursor: pointer;
-  box-shadow: var(--shadow-effect);
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect);
+  -webkit-transition: all var(--transition-duration);
+  -o-transition: all var(--transition-duration);
   transition: all var(--transition-duration);
 }
 .copy-btn:hover {
   background: var(--fixed-dark-text); /* عند التمرير */
   color: var(--fixed-dark-color);
-    transform: scale(1.1);
-    box-shadow: 0px 4px 8px rgb(0 0 0 / 0%);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
+    -webkit-box-shadow: 0px 4px 8px rgb(0 0 0 / 0%);
+            box-shadow: 0px 4px 8px rgb(0 0 0 / 0%);
 }
 
 /* Copy Notification */
@@ -219,23 +254,39 @@ textarea:focus {
   padding: 5px 10px;
   font-size: 12px;
   border-radius: var(--tab-border-radius);
-  box-shadow: var(--shadow-effect);
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect);
   display: none;
 }
 .copy-notification.active {
   display: block;
-  animation: fadeIn 0.5s ease;
+  -webkit-animation: fadeIn 0.5s ease;
+          animation: fadeIn 0.5s ease;
 }
 
 /* Fade In Animation */
-@keyframes fadeIn {
+@-webkit-keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
@@ -296,47 +347,64 @@ position: fixed;
     padding: 8px 13px;
     font-size: 18px;
     cursor: pointer;
-    box-shadow: var(--shadow-effect);
+    -webkit-box-shadow: var(--shadow-effect);
+            box-shadow: var(--shadow-effect);
     display: none;
     z-index: 1000;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
 }
 
 #backToTop:hover {
   background-color: var(--button-hover-color);
-  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /* Styling for the tab section navigation */
 .tab-section-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap; /* Allow links to wrap to the next line */
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow links to wrap to the next line */
   gap: 10px;
   padding: 10px;
   margin-bottom: 20px;
   background: var(--highlight-color);
   border: 1px solid var(--highlight-color);
   border-radius: var(--tab-border-radius);
-  box-shadow: var(--shadow-effect);
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect);
 }
 
 .tab-section-nav a {
-  display: inline-block;
-  padding: 3px 9px;
-  background: var(--tab-bg-color);
-  color: var(--text-color);
-  text-decoration: none;
-  font-size: 11px;
-  font-weight: 500;
-  border-radius: var(--tab-border-radius);
-  transition: all 0.3s ease-in-out;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+display: block;
+    width: 66%;
+    text-align: center;
+    padding: 6px 9px;
+    background: var(--tab-bg-color);
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--tab-border-radius);
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -webkit-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .tab-section-nav a:hover {
   background: var(--primary-color);
   color: var(--highlight-color)!important;
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  -webkit-transform: translateY(-2px);
+      -ms-transform: translateY(-2px);
+          transform: translateY(-2px);
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .tab-section-nav a.active {
@@ -344,23 +412,35 @@ position: fixed;
   color: #000;
   font-weight: 700;
   border: 1px solid var(--highlight-color);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
 .circle-button {
   width: 50px; /* قطر الزر */
   height: 50px; /* قطر الزر */
   border-radius: 50%; /* اجعل الزر دائري */
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin-bottom: 20px; /* مسافة من الأعلى */
   background: var(--highlight-color); /* خلفية متناسقة */
   color: var(--text-color); /* لون الأيقونة */
   border: none; /* إزالة الحدود */
   cursor: pointer;
-  box-shadow: var(--shadow-effect); /* تأثير الظل */
+  -webkit-box-shadow: var(--shadow-effect);
+          box-shadow: var(--shadow-effect); /* تأثير الظل */
+  -webkit-transition: background 0.3s ease, -webkit-transform 0.3s ease;
+  transition: background 0.3s ease, -webkit-transform 0.3s ease;
+  -o-transition: transform 0.3s ease, background 0.3s ease;
   transition: transform 0.3s ease, background 0.3s ease;
+  transition: transform 0.3s ease, background 0.3s ease, -webkit-transform 0.3s ease;
 }
 
 .circle-button i {
@@ -368,7 +448,9 @@ position: fixed;
 }
 
 .circle-button:hover {
-  transform: scale(1.1); /* تكبير بسيط عند التمرير */
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1); /* تكبير بسيط عند التمرير */
   background: var(--primary-color); /* لون الخلفية عند التمرير */
   color: var(--highlight-color); /* لون الأيقونة عند التمرير */
 }
@@ -397,15 +479,136 @@ position: fixed;
   padding: 10px; /* إضافة حواف داخلية لتحسين الشكل */
   border-radius: var(--tab-border-radius); /* حواف دائرية */
   font-weight: 700; /* جعل النص غامق لتحسين الوضوح */
-  text-align: center; /* النص في المنتصف */
 }
 
 h3 {
   font-weight: 700; /* جعل النص غامق لتحسين الوضوح */
-  text-align: center; /* النص في المنتصف */
 }
 
+:root[data-theme="light"] nav ul li a:hover {color: #ffffff;}
 
+:root[data-theme="light"] .tab-section-nav a {background: var(--primary-color);color:var(--highlight-color)!important;}
+
+:root[data-theme="light"] nav {-webkit-box-shadow:0px 0px 0px rgba(0, 0, 0, 0);box-shadow:0px 0px 0px rgba(0, 0, 0, 0);}
+
+:root[data-theme="light"] .tabsm{-webkit-box-shadow:0px 2px 6px rgba(0, 0, 0, 0.1);box-shadow:0px 2px 6px rgba(0, 0, 0, 0.1);}
+
+:root[data-theme="light"] .copy-notification{background: #00acb6; color: #f1f1f1; border: 1px solid #f1f1f1;}
+
+/* جدول الكويريز */
+.queries-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* تنسيق عناوين الجدول */
+.queries-table thead {
+  background-color: var(--primary-color); /* لون الخلفية */
+  color: var(--highlight-color); /* لون النص */
+  font-size: 16px; /* حجم الخط */
+  font-weight: bold; /* سمك الخط */
+  text-align: left;
+}
+
+/* تنسيق خلايا العنوان */
+.queries-table thead th {
+  padding: 15px; /* إضافة padding */
+  border: 1px solid var(--fixed-dark-border); /* إضافة حدود */
+  background-color: var(--primary-color); /* تأكيد لون الخلفية */
+  color: var(--highlight-color); /* تأكيد لون النص */
+  box-sizing: border-box; /* تضمين الحشوة والحدود في العرض */
+}
+
+/* تنسيق الصفوف */
+.queries-table tbody tr {
+  display: table-row; /* إعادة تعيين العرض إلى سلوك الجدول الطبيعي */
+}
+
+/* تنسيق العمود الأيسر (الكلمة) */
+.queries-table tbody .word-column {
+  background: var(--tab-bg-color);
+  color: var(--text-color);
+  font-weight: bold;
+  padding: 10px; /* إضافة padding لتحسين المظهر */
+  width: 25%; /* عرض العمود الأيسر */
+  vertical-align: top; /* محاذاة المحتوى من الأعلى */
+  box-sizing: border-box; /* تضمين الحشوة والحدود في العرض */
+    vertical-align: middle; /* توسيط المحتوى عموديًا */
+
+}
+
+/* تنسيق العمود الأيمن (الشرح) */
+.queries-table tbody .explanation-column {
+  background: var(--fixed-dark-color);
+  color: var(--fixed-dark-textareatext);
+  padding: 10px; /* إضافة padding لتحسين المظهر */
+  width: 75%; /* عرض العمود الأيمن */
+  vertical-align: top; /* محاذاة المحتوى من الأعلى */
+  box-sizing: border-box; /* تضمين الحشوة والحدود في العرض */
+}
+
+.queries-table td {
+  padding: 10px;
+}
+
+:root[data-theme="light"] .queries-table tbody .word-column {
+  background: #f3f3f3;
+}
+
+:root[data-theme="light"] .queries-table td {
+  border-bottom: 1px solid #8383833d;
+}
+
+:root[data-theme="dark"] .queries-table td {
+  border-bottom: 1px solid #0000003d;
+  border-left: 1px solid #0000003d;
+}
+
+/* تنسيق زر النسخ */
+.copy-word-btn {
+  background: var(--primary-color);
+  color: var(--highlight-color);
+  border: none;
+  border-radius: var(--tab-border-radius);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-right: 10px; /* المسافة بين الزر والنص */
+  -webkit-transition: all var(--transition-duration);
+  -o-transition: all var(--transition-duration);
+  transition: all var(--transition-duration);
+  flex-shrink: 0; /* منع الزر من التقلص */
+}
+
+.copy-word-btn:hover {
+  background: var(--button-hover-color);
+  color: var(--highlight-color);
+  -webkit-transform: scale(1.1);
+      -ms-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+/* تنسيق مربع البحث */
+.search-box {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid var(--fixed-dark-border);
+  border-radius: var(--tab-border-radius);
+  background: var(--fixed-dark-color);
+  color: var(--fixed-dark-textareatext);
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  outline: none;
+  text-align: center;
+}
+
+.search-box:focus {
+  border-color: var(--secondary-color);
+  -webkit-box-shadow: 0px 0px 8px var(--secondary-color);
+          box-shadow: 0px 0px 8px var(--secondary-color);
+}
 </style>
 </head>
 <body>
@@ -416,6 +619,7 @@ h3 {
 <button id="themeToggle" class="circle-button" title="Toggle Theme">
   <i class="fas fa-adjust"></i>
 </button>
+  <input type="text" id="searchBox" placeholder="ابحث عن قسم..." class="search-box">
 
   <ul id="navbar"></ul>
 </nav>
@@ -432,7 +636,16 @@ h3 {
 <script>
 /* Pages Data */
 const pagesData = [
-  {
+ 
+  
+    {
+    title: "Queries", // عنوان الصفحة
+    icon: "fas fa-database", // أيقونة الصفحة
+    tabs: [] // بدون تابات
+  },
+  
+   {
+  
     title: "Tracking", // عنوان الصفحة
     icon: "fas fa-shipping-fast", // الأيقونة الخاصة بالصفحة
     tabs: [ // محتوى التابات
@@ -522,9 +735,7 @@ const pagesData = [
       }
     ]
   },
-  
-  
-  
+
   
   
   
@@ -585,37 +796,6 @@ const pagesData = [
   
   
   
-  
-  
-  /*******************************
-   * ADD YOUR NEW PAGE HERE BELOW
-   *******************************/
-  {
-    title: "New Page Title", // عنوان الصفحة الجديدة
-    icon: "fas fa-folder", // أيقونة الصفحة الجديدة
-    tabs: [
-      {
-        title: "New Tab 1", // عنوان التاب الأول
-        icon: "fas fa-info-circle", // أيقونة التاب الأول
-        templates: [
-          {
-            heading: "New Template 1", // عنوان المحتوى الأول
-            content: `مرحبًا،\n\nهذا هو المحتوى الأول للتاب الأول في الصفحة الجديدة...\n` // المحتوى
-          }
-        ]
-      },
-      {
-        title: "New Tab 2", // عنوان التاب الثاني
-        icon: "fas fa-cog", // أيقونة التاب الثاني
-        templates: [
-          {
-            heading: "New Template 2", // عنوان المحتوى الأول في التاب الثاني
-            content: `مرحبًا،\n\nهذا هو المحتوى الأول للتاب الثاني في الصفحة الجديدة...\n`
-          }
-        ]
-      }
-    ]
-  }
 ];
 /* Generate Pages and Tabs Dynamically */
 function generatePages() {
@@ -634,87 +814,172 @@ function generatePages() {
     pageDiv.className = "tabsm";
     pageDiv.style.display = pageIndex === 0 ? "block" : "none";
 
-    // Add Tabs
-    const tabsNav = document.createElement("div");
-    tabsNav.className = "tabsm-nav";
-    page.tabs.forEach((tab, tabIndex) => {
-      const tabButton = document.createElement("button");
-      tabButton.className = `tabm-button ${tabIndex === 0 ? "active" : ""}`;
-      tabButton.innerHTML = `<i class="${tab.icon}"></i> ${tab.title}`;
-      tabButton.onclick = () => showTab(pageIndex, tabIndex);
-      tabsNav.appendChild(tabButton);
-    });
-    pageDiv.appendChild(tabsNav);
+    if (page.title === "Queries") {
+      // إنشاء الجدول للصفحة "كويريز"
+      const table = document.createElement("table");
+      table.className = "queries-table";
 
-    // Add Templates and Navigation for Each Tab
-    page.tabs.forEach((tab, tabIndex) => {
-      const tabContent = document.createElement("div");
-      tabContent.className = "tab-content";
-      tabContent.style.display = tabIndex === 0 ? "block" : "none";
+      // إضافة عناوين الجدول
+const tableHeader = document.createElement("thead");
+tableHeader.innerHTML = `
+  <tr>
+    <th class="word-column">Noon Care Issue</th>
+    <th class="explanation-column">Guideline</th>
+  </tr>
+`;
+table.appendChild(tableHeader);
 
-      // Navigation inside the tab
-      const tabSectionNav = document.createElement("div");
-      tabSectionNav.className = "tab-section-nav";
-      tabSectionNav.style.marginBottom = "20px";
-      tabSectionNav.style.border = "1px solid var(--highlight-color)";
-      tabSectionNav.style.padding = "10px";
-      tabSectionNav.style.borderRadius = "4px";
+// بيانات الجدول (يمكن استبدالها ببيانات ديناميكية)
+const data = [
+  { word: "Account Related", explanation: "If Cx has concerns regarding his noon account [ invoice related, Account preferences or change email, password, name, verify mobile number, etc..]." },
+  { word: "SMS issue", explanation: "" },
+  { word: "Address ChangeorPhone Number", explanation: "Cx requests to change the address or phone number." },
+  { word: "ApporWebsite Related", explanation: "If the Cx inquires about steps how to use features or services on our app & website/if the cx inquires about how to use (eg-Noon Credits) & Gift cards & how to make a review on the app." },
+  { word: "policies procedures", explanation: "If the Cx is asking for information about any service policy [eg-EMI - COD/Shipping Fees/installation/Noon Locker], return (In case the cx has no order yet or order is not delivered yet), cancelation(In case the cx has no order yet), or asking about any of our policies listed on our website or if the cx is asking about the company's profile or history/if the cx is inquiring about how our delivery services operate or to where we deliver" },
+  { word: "Campaigns and Promotions", explanation: "If the Cx is talking about the current, finished or future discounts, codes, gift cards for a specific campaign or brand, promotions or offers." },
+  { word: "Cancel Order", explanation: "If the Cx wants to cancel an item/order or asking why my order is canceled." },
+  { word: "ScheduleorReattempt Delivery", explanation: "If the Cx is asking for urgent delivery for the order / Customer needs to reschedule a delivery for only (Aramex, SMSA, Saudi Post (SPL), iMile, Flow, and J&T Express)." },
+  { word: "Arrange delivery from locker", explanation: "" },
+  { word: "Locker switched offordisconnected", explanation: "" },
+  { word: "Delivery validation code", explanation: "Used when the Cx inquires about the OTP for prepaid orders above 4500 EGP or bulky items. The OTP can be found on the 'My Orders' page in the noon app or in the SMS sent to the registered phone number. If the cx cannot locate the OTP, verify their identity by asking about the order items, registered email, or phone number. If verified, share the OTP via SUDO and log the query. If the cx fails verification, advise them to check the app or SMS and contact us again." },
+  { word: "Follow Up ComplaintorRequest", explanation: "If the Cx is following up on an existing complaint or request (Already solved with resolution and no room for leaving a comment on the solved ticket) or it has been closed, and you can inform the CX of the latest update / When the customer comes for a follow up on an existing open complaint or request." },
+  { word: "noon One membership", explanation: "If the Cx inquiring about noonone membership subscription/ how to cancel." },
+  { word: "No Response from Customer", explanation: "If the Cx query wasn't clear and didn't continue the conversation for any reason before clarifying the query (Don't forget to update with the Noon care issue as soon as the customer replies with their query). / Cx sends emojis or talks unnecessary or irrelevant things or any prank call" },
+  { word: "Order Tracking", explanation: "When the Cx is asking for an update on an order / Item status [exported, shipped, OFD, cancelled, undelivered]." },
+  { word: "Not Competitive Price Item", explanation: "GCC / Used when the Cx reports that an item's price is higher compared to competitors. Check the price difference and confirm if the comparison is valid. If valid, create a ticket using the template: 'Noon Care Issue: Content or Price Error'. Assign the ticket to 'EGY CS - Escalation' and submit it with SLA of 2 days. Inform the cx that the issue has been escalated for review and update them once resolved." },
+  { word: "Other Dept Info", explanation: "If Cx has questions about other departments or functions of noon (Namshi / Food / SIVVI / VIP / Minutes / Seller Support / Partnerships / Marketing or asking about job vacancies)." },
+  { word: "Product Related", explanation: "If the Cx is inquiring about the specifications or authenticity of an item, even if the order has already been created, but the Cx is asking about specific details of the product / seller's info of an item." },
+  { word: "Place a New Order", explanation: "Cx needs guidance in placing a new order or if we are placing an order on the customer's behalf or Cx follows up or is upset about the order status (new/invalid)." },
+  { word: "direct return to seller", explanation: "If the the return request marked to Agent One with the following notification: 'This item has a return request and is managed by a Direct Ship seller'." },
+  { word: "Return Related", explanation: "If the Cx is inquiring about the return status, when the return will be picked up, or wants to raise a return request, or we offer a return for returnable items to the cx." },
+  { word: "Damage Item", explanation: "" },
+  { word: "Fake Item", explanation: "" },
+  { word: "Wrong Item", explanation: "" },
+  { word: "Refund Related", explanation: "If the Cx is asking about the refund status for a returned or canceled order, or we will clarify the self-transfer for the customer, or the refund status SLA." },
+  { word: "Warranty Related", explanation: "If the Cx is asking about the warranty policy, or wants to raise warranty claim through agent one or following up on an existing warranty claim" },
+  { word: "Trade In related", explanation: "GCC / Used when the cx inquires about the Noon Trade-in program or has concerns related to it. This can include general inquiries about eligibility, process, and terms (e.g., which devices are eligible, available regions for trade-in, how the pickup works). If the cx is experiencing issues like delays in pickup or refund, or needs help contacting North Ladder, create a ticket using the template: 'Noon Care Issue: Trade-in Process'. Assign the ticket to 'CS Escalation Process Team' and submit it with SLA of 48 hours. Provide the customer with the appropriate contact details for North Ladder (UAE or KSA), if necessary, and inform the cx that the issue is being reviewed." },
+  { word: "VOC", explanation: "Used when a customer provides feedback, suggestions, or wishes to submit ideas to improve the service or product." },
+  { word: "IPL Related", explanation: "Used when the customer has queries or issues related to the IPL (Indian Premier League) campaign for GCC & EGY regions. This can include subscription issues or streaming issues. If the customer is unable to subscribe, advise them to 'Refresh the app and try again in a while.' For streaming issues, ask them to 'Check the internet connection, refresh, and try again in some time.' These issues should be raised under the 'Query' category and closed without creating a complaint. If the customer insists on escalating or raising a complaint, then a complaint ticket should be created." },
+  { word: "Custom Fees inquiries", explanation: "Used when the customer inquires about customs fees related to their purchases, especially for mobiles. / For general inquiries, inform the customer that there are no additional charges for pre-orders. / For purchased mobiles, advise them to check directly with NTRA (National Telecommunications Regulatory Authority)." },
+];
 
-      tab.templates.forEach((template, templateIndex) => {
-        // Add navigation link with an icon
-        const sectionLink = document.createElement("a");
-        sectionLink.href = `#section-${pageIndex}-${tabIndex}-${templateIndex}`;
-        sectionLink.style.marginRight = "15px";
-        sectionLink.style.cursor = "pointer";
-        sectionLink.style.color = "var(--primary-color)";
-        sectionLink.onclick = (e) => {
-          e.preventDefault();
-          document
-            .getElementById(`section-${pageIndex}-${tabIndex}-${templateIndex}`)
-            .scrollIntoView({ behavior: "smooth", block: "start" });
-        };
+const tableBody = document.createElement("tbody");
+data.forEach(item => {
+  const row = document.createElement("tr");
 
-        // Add an icon to the link
-        const icon = document.createElement("i");
-        icon.className = "fas fa-angle-right"; // Static icon
-        icon.style.marginRight = "8px";
+  // العمود الأيسر (الكلمة مع زر النسخ)
+  const wordCell = document.createElement("td");
+  wordCell.className = "word-column";
 
-        // Add text to the link
-        const linkText = document.createTextNode(template.heading);
+  // زر النسخ قبل الكلمة
+  const copyButton = document.createElement("button");
+  copyButton.className = "copy-word-btn";
+  copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+  copyButton.onclick = () => copyContent(copyButton);
+  wordCell.appendChild(copyButton);
 
-        // Append icon and text to the link
-        sectionLink.appendChild(icon);
-        sectionLink.appendChild(linkText);
+  // إضافة الكلمة بعد زر النسخ
+  const wordText = document.createTextNode(item.word);
+  wordCell.appendChild(wordText);
 
-        // Append the link to the navigation
-        tabSectionNav.appendChild(sectionLink);
+  // العمود الأيمن (الشرح)
+  const explanationCell = document.createElement("td");
+  explanationCell.className = "explanation-column";
+  explanationCell.textContent = item.explanation;
 
-        // Create section for each template
-        const templateDiv = document.createElement("div");
-        templateDiv.style.position = "relative";
-        templateDiv.id = `section-${pageIndex}-${tabIndex}-${templateIndex}`;
+  // إضافة الخلايا إلى الصف
+  row.appendChild(wordCell);
+  row.appendChild(explanationCell);
 
-        const textarea = document.createElement("textarea");
-        textarea.dir = "rtl";
-        textarea.disabled = true;
-        textarea.textContent = template.content;
+  // إضافة الصف إلى الجدول
+  tableBody.appendChild(row);
+});
 
-        templateDiv.innerHTML = `<h3>${template.heading}</h3>`;
-        templateDiv.appendChild(textarea);
-
-        // Adjust height after adding to DOM
-        setTimeout(() => adjustTextareaHeight(textarea), 10);
-
-        templateDiv.innerHTML += `
-          <button class="copy-btn" onclick="copyContent(this)"><i class="fas fa-copy"></i></button>
-          <div class="copy-notification">Copied!</div>
-        `;
-        tabContent.appendChild(templateDiv);
+table.appendChild(tableBody);
+pageDiv.appendChild(table);
+    } else {
+      // الكود الأصلي لإضافة التابات والصفحات الأخرى
+      const tabsNav = document.createElement("div");
+      tabsNav.className = "tabsm-nav";
+      page.tabs.forEach((tab, tabIndex) => {
+        const tabButton = document.createElement("button");
+        tabButton.className = `tabm-button ${tabIndex === 0 ? "active" : ""}`;
+        tabButton.innerHTML = `<i class="${tab.icon}"></i> ${tab.title}`;
+        tabButton.onclick = () => showTab(pageIndex, tabIndex);
+        tabsNav.appendChild(tabButton);
       });
+      pageDiv.appendChild(tabsNav);
 
-      tabContent.insertBefore(tabSectionNav, tabContent.firstChild);
-      pageDiv.appendChild(tabContent);
-    });
+      // Add Templates and Navigation for Each Tab
+      page.tabs.forEach((tab, tabIndex) => {
+        const tabContent = document.createElement("div");
+        tabContent.className = "tab-content";
+        tabContent.style.display = tabIndex === 0 ? "block" : "none";
+
+        // Navigation inside the tab
+        const tabSectionNav = document.createElement("div");
+        tabSectionNav.className = "tab-section-nav";
+        tabSectionNav.style.marginBottom = "20px";
+        tabSectionNav.style.border = "1px solid var(--highlight-color)";
+        tabSectionNav.style.padding = "10px";
+        tabSectionNav.style.borderRadius = "4px";
+
+        tab.templates.forEach((template, templateIndex) => {
+          // Add navigation link with an icon
+          const sectionLink = document.createElement("a");
+          sectionLink.href = `#section-${pageIndex}-${tabIndex}-${templateIndex}`;
+          sectionLink.style.margin = "0 auto";
+          sectionLink.style.cursor = "pointer";
+          sectionLink.style.color = "var(--primary-color)";
+          sectionLink.onclick = (e) => {
+            e.preventDefault();
+            document
+              .getElementById(`section-${pageIndex}-${tabIndex}-${templateIndex}`)
+              .scrollIntoView({ behavior: "smooth", block: "start" });
+          };
+
+          // Add an icon to the link
+          const icon = document.createElement("i");
+          icon.className = "fas fa-tag"; // Static icon
+          icon.style.marginRight = "8px";
+
+          // Add text to the link
+          const linkText = document.createTextNode(template.heading);
+
+          // Append icon and text to the link
+          sectionLink.appendChild(icon);
+          sectionLink.appendChild(linkText);
+
+          // Append the link to the navigation
+          tabSectionNav.appendChild(sectionLink);
+
+          // Create section for each template
+          const templateDiv = document.createElement("div");
+          templateDiv.style.position = "relative";
+          templateDiv.id = `section-${pageIndex}-${tabIndex}-${templateIndex}`;
+
+          const textarea = document.createElement("textarea");
+          textarea.dir = "rtl";
+          textarea.disabled = true;
+          textarea.textContent = template.content;
+
+          templateDiv.innerHTML = `<h3>${template.heading}</h3>`;
+          templateDiv.appendChild(textarea);
+
+          // Adjust height after adding to DOM
+          setTimeout(() => adjustTextareaHeight(textarea), 10);
+
+          templateDiv.innerHTML += `
+            <button class="copy-btn" onclick="copyContent(this)"><i class="fas fa-copy"></i></button>
+            <div class="copy-notification">!تم النسخ</div>
+          `;
+          tabContent.appendChild(templateDiv);
+        });
+
+        tabContent.insertBefore(tabSectionNav, tabContent.firstChild);
+        pageDiv.appendChild(tabContent);
+      });
+    }
 
     pagesContainer.appendChild(pageDiv);
   });
@@ -782,12 +1047,38 @@ function showTab(pageIndex, tabIndex) {
 
 /* Copy Content with Notification */
 function copyContent(button) {
+  // البحث عن العنصر textarea المجاور للزر
   const textarea = button.previousElementSibling;
-  navigator.clipboard.writeText(textarea.value).then(() => {
-    const notification = button.nextElementSibling;
-    notification.classList.add("active");
-    setTimeout(() => notification.classList.remove("active"), 2000);
-  });
+  
+  if (textarea && textarea.tagName === "TEXTAREA") {
+    // نسخ محتوى textarea
+    navigator.clipboard.writeText(textarea.value).then(() => {
+      const notification = button.nextElementSibling;
+      notification.classList.add("active");
+      setTimeout(() => notification.classList.remove("active"), 2000);
+    });
+  } else {
+    // في حالة عدم وجود textarea، ابحث عن الكلاس word-column
+    const parentElement = button.closest(".word-column");
+    if (parentElement) {
+      const contentToCopy = parentElement.textContent.trim();
+
+      // نسخ النص إلى الحافظة
+      navigator.clipboard.writeText(contentToCopy).then(() => {
+        const notification = document.createElement("div");
+        notification.className = "copy-notification active";
+        notification.textContent = "تم النسخ!";
+        document.body.appendChild(notification);
+
+        // إزالة الإشعار بعد 2 ثانية
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 2000);
+      });
+    } else {
+      console.error("لم يتم العثور على نص للنسخ.");
+    }
+  }
 }
 
 /* Initialize Pages */
@@ -833,6 +1124,32 @@ themeToggle.addEventListener("click", () => {
 });
 
 
+// دالة البحث
+function searchSections() {
+  const searchBox = document.getElementById("searchBox");
+  const searchTerm = searchBox.value.toLowerCase();
+  const navItems = document.querySelectorAll("#navbar li");
+
+  navItems.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    if (text.includes(searchTerm)) {
+      item.style.display = "block";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+
+// إضافة حدث البحث عند الكتابة
+document.getElementById("searchBox").addEventListener("input", searchSections);
+
+// إعادة عرض جميع العناصر عند مسح البحث
+document.getElementById("searchBox").addEventListener("search", () => {
+  const navItems = document.querySelectorAll("#navbar li");
+  navItems.forEach(item => {
+    item.style.display = "block";
+  });
+});
 </script>
 
 </body>
