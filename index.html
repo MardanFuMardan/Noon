@@ -396,7 +396,7 @@ position: fixed;
 display: block;
     width: 46%;
     text-align: center;
-    padding: 6px 9px;
+    padding: 10px 9px;
     background: var(--tab-bg-color);
     color: var(--text-color);
     text-decoration: none;
@@ -467,6 +467,9 @@ display: block;
   padding: 10px;
   border-radius: var(--tab-border-radius);
 }
+
+.dropdown-list div a i.fas { margin-right: 8px; }
+
 
 .dropdown-list div a:hover {
   background: var(--primary-color);
@@ -717,6 +720,76 @@ footer.main-footer p {
     background: #f0f8ff00;
 }
 
+
+
+
+
+
+/* تنسيق عنوان Templates List */
+.templates-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 100%;
+  background: var(--tab-bg-color);
+  color: var(--primary-color);
+  border: 0;
+}
+
+/* تنسيق مربع البحث */
+.template-search-box {
+  width: 96%;
+  padding: 10px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  border: 1px solid var(--fixed-dark-border);
+  border-radius: var(--tab-border-radius);
+  background: var(--fixed-dark-color);
+  color: var(--fixed-dark-textareatext);
+  font-family: 'Cairo', sans-serif;
+  font-size: 14px;
+  outline: none;
+  text-align: center;
+}
+
+.template-search-box:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0px 0px 4px var(--secondary-color);
+}
+
+/* تنسيق links-container */
+.links-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+}
+
+.links-container a {
+  display: block;
+  width: 46%;
+  text-align: center;
+  padding: 10px 9px;
+  background: var(--tab-bg-color);
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--tab-border-radius);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.links-container a:hover {
+  background: var(--primary-color);
+  color: var(--highlight-color) !important;
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
 /* إضافة Media Queries للشاشات الصغيرة */
 @media (max-width: 768px) {
   body {
@@ -817,7 +890,7 @@ footer.main-footer p {
   </div>
 </div>
 
-  <input type="text" id="searchBox" placeholder="ابحث عن قسم..." class="search-box">
+  <input type="text" id="searchBox" placeholder="Search Category..." class="search-box">
 
   <ul id="navbar"></ul>
   
@@ -2285,14 +2358,14 @@ function generatePages() {
       table.className = "queries-table";
 
       // إضافة عناوين الجدول
-const tableHeader = document.createElement("thead");
-tableHeader.innerHTML = `
-  <tr>
-    <th class="word-column">Noon Care Issue</th>
-    <th class="explanation-column">Guideline</th>
-  </tr>
-`;
-table.appendChild(tableHeader);
+      const tableHeader = document.createElement("thead");
+      tableHeader.innerHTML = `
+        <tr>
+          <th class="word-column">Noon Care Issue</th>
+          <th class="explanation-column">Guideline</th>
+        </tr>
+      `;
+      table.appendChild(tableHeader);
 
 // بيانات الجدول (يمكن استبدالها ببيانات ديناميكية)
 const data = [
@@ -2329,39 +2402,39 @@ const data = [
 ];
 
 const tableBody = document.createElement("tbody");
-data.forEach(item => {
-  const row = document.createElement("tr");
+      data.forEach(item => {
+        const row = document.createElement("tr");
 
-  // العمود الأيسر (الكلمة مع زر النسخ)
-  const wordCell = document.createElement("td");
-  wordCell.className = "word-column";
+        // العمود الأيسر (الكلمة مع زر النسخ)
+        const wordCell = document.createElement("td");
+        wordCell.className = "word-column";
 
-  // زر النسخ قبل الكلمة
-  const copyButton = document.createElement("button");
-  copyButton.className = "copy-word-btn";
-  copyButton.innerHTML = '<i class="fas fa-copy"></i>';
-  copyButton.onclick = () => copyContent(copyButton);
-  wordCell.appendChild(copyButton);
+        // زر النسخ قبل الكلمة
+        const copyButton = document.createElement("button");
+        copyButton.className = "copy-word-btn";
+        copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+        copyButton.onclick = () => copyContent(copyButton);
+        wordCell.appendChild(copyButton);
 
-  // إضافة الكلمة بعد زر النسخ
-  const wordText = document.createTextNode(item.word);
-  wordCell.appendChild(wordText);
+        // إضافة الكلمة بعد زر النسخ
+        const wordText = document.createTextNode(item.word);
+        wordCell.appendChild(wordText);
 
-  // العمود الأيمن (الشرح)
-  const explanationCell = document.createElement("td");
-  explanationCell.className = "explanation-column";
-  explanationCell.textContent = item.explanation;
+        // العمود الأيمن (الشرح)
+        const explanationCell = document.createElement("td");
+        explanationCell.className = "explanation-column";
+        explanationCell.textContent = item.explanation;
 
-  // إضافة الخلايا إلى الصف
-  row.appendChild(wordCell);
-  row.appendChild(explanationCell);
+        // إضافة الخلايا إلى الصف
+        row.appendChild(wordCell);
+        row.appendChild(explanationCell);
 
-  // إضافة الصف إلى الجدول
-  tableBody.appendChild(row);
-});
+        // إضافة الصف إلى الجدول
+        tableBody.appendChild(row);
+      });
 
-table.appendChild(tableBody);
-pageDiv.appendChild(table);
+      table.appendChild(tableBody);
+      pageDiv.appendChild(table);
     } else {
       // الكود الأصلي لإضافة التابات والصفحات الأخرى
       const tabsNav = document.createElement("div");
@@ -2389,8 +2462,42 @@ pageDiv.appendChild(table);
         tabSectionNav.style.padding = "10px";
         tabSectionNav.style.borderRadius = "4px";
 
+        // إضافة عنوان "Templates List" ومربع البحث داخل tabSectionNav
+        const templatesTitle = document.createElement("h3");
+        templatesTitle.className = "templates-title";
+        templatesTitle.textContent = "Template List";
+
+        const searchBox = document.createElement("input");
+        searchBox.type = "text";
+        searchBox.id = `templateSearch-${pageIndex}-${tabIndex}`;
+        searchBox.placeholder = "Search templates...";
+        searchBox.className = "template-search-box";
+
+        // إنشاء div للروابط
+        const linksContainer = document.createElement("div");
+        linksContainer.className = "links-container";
+
+        // إضافة الحدث للبحث
+        searchBox.addEventListener("input", () => {
+          const searchTerm = searchBox.value.toLowerCase();
+          const links = linksContainer.querySelectorAll("a");
+
+          links.forEach(link => {
+            const text = link.textContent.toLowerCase();
+            if (text.includes(searchTerm)) {
+              link.style.display = "block";
+            } else {
+              link.style.display = "none";
+            }
+          });
+        });
+
+        // إضافة العنوان ومربع البحث إلى tabSectionNav
+        tabSectionNav.appendChild(templatesTitle);
+        tabSectionNav.appendChild(searchBox);
+
+        // إضافة الروابط إلى linksContainer
         tab.templates.forEach((template, templateIndex) => {
-          // Add navigation link with an icon
           const sectionLink = document.createElement("a");
           sectionLink.href = `#section-${pageIndex}-${tabIndex}-${templateIndex}`;
           sectionLink.style.margin = "0 auto";
@@ -2415,10 +2522,18 @@ pageDiv.appendChild(table);
           sectionLink.appendChild(icon);
           sectionLink.appendChild(linkText);
 
-          // Append the link to the navigation
-          tabSectionNav.appendChild(sectionLink);
+          // Append the link to the linksContainer
+          linksContainer.appendChild(sectionLink);
+        });
 
-          // Create section for each template
+        // إضافة linksContainer إلى tabSectionNav
+        tabSectionNav.appendChild(linksContainer);
+
+        // إضافة tabSectionNav إلى tabContent
+        tabContent.appendChild(tabSectionNav);
+
+        // إنشاء الأقسام لكل قالب
+        tab.templates.forEach((template, templateIndex) => {
           const templateDiv = document.createElement("div");
           templateDiv.style.position = "relative";
           templateDiv.id = `section-${pageIndex}-${tabIndex}-${templateIndex}`;
@@ -2428,7 +2543,7 @@ pageDiv.appendChild(table);
           textarea.disabled = true;
           textarea.textContent = template.content;
 
-          templateDiv.innerHTML = `<h3>${template.heading}</h3>`;
+          templateDiv.innerHTML = `<h4>${template.heading}</h4>`;
           templateDiv.appendChild(textarea);
 
           // Adjust height after adding to DOM
@@ -2441,11 +2556,12 @@ pageDiv.appendChild(table);
           tabContent.appendChild(templateDiv);
         });
 
-        tabContent.insertBefore(tabSectionNav, tabContent.firstChild);
+        // إضافة tabContent إلى pageDiv
         pageDiv.appendChild(tabContent);
       });
     }
 
+    // إضافة pageDiv إلى pagesContainer
     pagesContainer.appendChild(pageDiv);
   });
 
