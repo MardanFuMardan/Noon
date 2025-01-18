@@ -429,8 +429,7 @@ display: block;
           box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-
-/* Dropdown Menu */
+/* تنسيق القائمة المنسدلة */
 .dropdown-menu {
   position: fixed;
   top: 0;
@@ -449,17 +448,17 @@ display: block;
   left: 0; /* إظهار القائمة عند التفعيل */
 }
 
-.dropdown-menu ul {
+.dropdown-list {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.dropdown-menu ul li {
+.dropdown-list div {
   padding: 10px;
 }
 
-.dropdown-menu ul li a {
+.dropdown-list div a {
   display: flex;
   align-items: center;
   color: var(--text-color);
@@ -469,7 +468,7 @@ display: block;
   border-radius: var(--tab-border-radius);
 }
 
-.dropdown-menu ul li a:hover {
+.dropdown-list div a:hover {
   background: var(--primary-color);
   color: var(--highlight-color);
 }
@@ -790,8 +789,7 @@ footer.main-footer p {
     <img id="logo" src="https://i.imgur.com/g9QL3ob.png" alt="Mail Ar">
   </div>
 
-  <!-- ديف لتجميع الأزرار الدائرية -->
-
+<!-- ديف لتجميع الأزرار الدائرية -->
 <div class="circle-buttons-container">
   <!-- زر القائمة المنسدلة (الدروب منيو) -->
   <button id="menuToggle" class="circle-button" title="Toggle Menu">
@@ -804,20 +802,20 @@ footer.main-footer p {
   </button>
 </div>
 
-  <!-- القائمة المنسدلة -->
-  <div class="dropdown-menu">
-    <button class="close-menu-btn" title="Close Menu">
-      <i class="fas fa-times"></i>
-    </button>
-    <ul>
-      <li><a href="https://noon-virid.vercel.app/"><i class="fas fa-square-envelope"></i>Mail Ar</a></li>
-      <li><a href="#"><i class="fas fa-square-envelope"></i>Mail En - Soon</a></li>
-	        <li><a href="#"><i class="fas fa-message"></i>Chat Ar - Soon</a></li>
-			      <li><a href="#"><i class="fas fa-message"></i>Chat En - Soon</a></li>
-				        <li><a href="#"><i class="fas fa-square-envelope"></i>Sivvi Ar - Soon</a></li>
-						      <li><a href="#"><i class="fas fa-square-envelope"></i>Sivvi en - Soon</a></li>
-    </ul>
+<!-- القائمة المنسدلة -->
+<div class="dropdown-menu">
+  <button class="close-menu-btn" title="Close Menu">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="dropdown-list">
+    <div><a href="https://noon-virid.vercel.app/"><i class="fas fa-square-envelope"></i>Mail Ar</a></div>
+    <div><a href="#"><i class="fas fa-square-envelope"></i>Mail En - Soon</a></div>
+    <div><a href="#"><i class="fas fa-message"></i>Chat Ar - Soon</a></div>
+    <div><a href="#"><i class="fas fa-message"></i>Chat En - Soon</a></div>
+    <div><a href="#"><i class="fas fa-square-envelope"></i>Sivvi Ar - Soon</a></div>
+    <div><a href="#"><i class="fas fa-square-envelope"></i>Sivvi en - Soon</a></div>
   </div>
+</div>
 
   <input type="text" id="searchBox" placeholder="ابحث عن قسم..." class="search-box">
 
@@ -1438,6 +1436,7 @@ const pagesData = [
     }
   ]
 },
+
 
 
  /* Refund */
